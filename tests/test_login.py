@@ -1,41 +1,81 @@
-# from pages.login_page import LoginPage
-# import time
+from pages.login_page import LoginPage
+from utils.logger import setup_logger
+import time
 
 
-# def test_valid_login(driver):
-
-#     driver.get(
-#         "https://practicesoftwaretesting.com/auth/login"
-#     )
-
-#     login_page = LoginPage(driver)
-
-#     # DEMO ACCOUNT
-#     login_page.enter_email(
-#         "customer@practicesoftwaretesting.com"
-#     )
-
-#     login_page.enter_password(
-#         "welcome01"
-#     )
-
-#     login_page.click_login()
-
-#     # WAIT FOR LOGIN
-#     time.sleep(3)
-
-#     print("Current URL:", driver.current_url)
-
-#     # VERIFY LOGIN
-#     if login_page.is_logout_visible():
-#         print("LOGIN SUCCESS")
-#     else:
-#         print("LOGIN FAILED")
-#         print(
-#             "Error Message:",
-#             login_page.get_error_message()
-#         )
-
-#     assert login_page.is_logout_visible()
+logger = setup_logger()
 
 
+def test_valid_login(driver):
+
+    driver.get(
+        "https://practicesoftwaretesting.com/auth/login"
+    )
+
+    logger.info(
+        "Login Page Opened"
+    )
+
+    login_page = LoginPage(driver)
+
+    # =========================
+    # ENTER EMAIL
+    # =========================
+
+    login_page.enter_email(
+        "customer@practicesoftwaretesting.com"
+    )
+
+    logger.info(
+        "Email Entered"
+    )
+
+    # =========================
+    # ENTER PASSWORD
+    # =========================
+
+    login_page.enter_password(
+        "welcome01"
+    )
+
+    logger.info(
+        "Password Entered"
+    )
+
+    # =========================
+    # CLICK LOGIN
+    # =========================
+
+    login_page.click_login()
+
+    logger.info(
+        "Login Button Clicked"
+    )
+
+    time.sleep(5)
+
+    # =========================
+    # VERIFY LOGIN
+    # =========================
+
+    current_url = (
+        driver.current_url.lower()
+    )
+
+    logger.info(
+        f"Current URL: {current_url}"
+    )
+
+    print(
+        f"\nCurrent URL: {current_url}"
+    )
+
+    assert "account" in current_url
+
+    logger.info(
+        "TEST CASE PASSED"
+    )
+
+    print(
+        "\nLOGIN TEST PASSED"
+    )

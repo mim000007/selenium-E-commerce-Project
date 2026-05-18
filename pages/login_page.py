@@ -1,61 +1,87 @@
-# from selenium.webdriver.common.by import By
-# from selenium.webdriver.support.ui import WebDriverWait
-# from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 
-# class LoginPage:
+class LoginPage:
 
-#     EMAIL_INPUT = (By.CSS_SELECTOR, 'input[data-test="email"]')
-#     PASSWORD_INPUT = (By.CSS_SELECTOR, 'input[data-test="password"]')
-#     LOGIN_BUTTON = (By.CSS_SELECTOR, 'input[data-test="login-submit"]')
+    # =========================
+    # LOCATORS
+    # =========================
 
-#     LOGOUT_BUTTON = (
-#         By.XPATH,
-#         "//a[contains(text(),'Sign out') or contains(text(),'Logout')]"
-#     )
+    EMAIL_INPUT = (
+        By.ID,
+        "email"
+    )
 
-#     ERROR_MESSAGE = (
-#         By.CSS_SELECTOR,
-#         ".alert-danger"
-#     )
+    PASSWORD_INPUT = (
+        By.ID,
+        "password"
+    )
 
-#     def __init__(self, driver):
-#         self.driver = driver
-#         self.wait = WebDriverWait(driver, 10)
+    LOGIN_BUTTON = (
+        By.XPATH,
+        "//input[@data-test='login-submit']"
+    )
 
-#     def enter_email(self, email):
-#         self.wait.until(
-#             EC.visibility_of_element_located(self.EMAIL_INPUT)
-#         ).send_keys(email)
+    def __init__(self, driver):
 
-#     def enter_password(self, password):
-#         self.wait.until(
-#             EC.visibility_of_element_located(self.PASSWORD_INPUT)
-#         ).send_keys(password)
+        self.driver = driver
 
-#     def click_login(self):
-#         self.wait.until(
-#             EC.element_to_be_clickable(self.LOGIN_BUTTON)
-#         ).click()
+        self.wait = WebDriverWait(
+            driver,
+            10
+        )
 
-#     def is_logout_visible(self):
-#         try:
-#             self.wait.until(
-#                 EC.visibility_of_element_located(
-#                     self.LOGOUT_BUTTON
-#                 )
-#             )
-#             return True
-#         except:
-#             return False
+    # =========================
+    # ENTER EMAIL
+    # =========================
 
-#     def get_error_message(self):
-#         try:
-#             error = self.wait.until(
-#                 EC.visibility_of_element_located(
-#                     self.ERROR_MESSAGE
-#                 )
-#             )
-#             return error.text
-#         except:
-#             return "No error message found"
+    def enter_email(self, email):
+
+        email_input = self.wait.until(
+            EC.visibility_of_element_located(
+                self.EMAIL_INPUT
+            )
+        )
+
+        email_input.clear()
+
+        email_input.send_keys(
+            email
+        )
+
+    # =========================
+    # ENTER PASSWORD
+    # =========================
+
+    def enter_password(self, password):
+
+        password_input = self.wait.until(
+            EC.visibility_of_element_located(
+                self.PASSWORD_INPUT
+            )
+        )
+
+        password_input.clear()
+
+        password_input.send_keys(
+            password
+        )
+
+    # =========================
+    # CLICK LOGIN BUTTON
+    # =========================
+
+    def click_login(self):
+
+        login_button = self.wait.until(
+            EC.element_to_be_clickable(
+                self.LOGIN_BUTTON
+            )
+        )
+
+        self.driver.execute_script(
+            "arguments[0].click();",
+            login_button
+        )
