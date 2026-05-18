@@ -1,0 +1,74 @@
+ Functional Requirements
+
+   - Authentication Module
+     - User should be able to login with valid credentials
+     - Invalid credentials should display validation message
+     - User registration should support unique email creation
+     - Google OAuth button should redirect user to Google authentication page
+
+   - Search Module
+     - User should be able to search products using keywords
+     - Search results should display matching products
+     - Invalid searches should return no results
+     - Partial keyword search should display related products
+
+   - Product Sorting Module
+     - Products should support Name (A-Z) sorting
+     - Products should support Name (Z-A) sorting
+     - Products should support Price (Low to High) sorting
+     - Products should support Price (High to Low) sorting
+     - Products should support Rating sorting
+
+   - Product Filter Module
+     - User should be able to filter products by category
+     - User should be able to filter products by brand
+     - User should be able to filter products by sustainability options
+     - Multiple checkbox filters should work correctly
+     - Filtered products should update dynamically
+
+   - Product Details Module
+     - User should be able to open product details page
+     - Plus button should increase product quantity
+     - Minus button should decrease product quantity
+     - Quantity should not go below minimum value
+     - Product details should display correctly
+
+   - Add To Cart Module
+     - User should be able to add products to cart
+     - Cart count should update dynamically
+     - Added products should appear in checkout page
+     - Product quantity should persist in cart
+
+   - Checkout Module
+     - User should be able to proceed to checkout
+     - User should be able to continue as guest
+     - Guest form should accept valid information
+     - Billing address form should accept valid data
+     - Payment method should be selectable
+     - Order should be confirmed successfully
+     - Success message should display after order placement
+
+   - Payment Module
+     - User should be able to select Cash on Delivery payment method
+     - Payment confirmation button should complete order process
+     - Order confirmation message should display successfully
+
+   - Contact Form Module
+     - User should be able to submit contact form
+     - Required fields should validate correctly
+     - TXT file upload should be supported
+     - Invalid file types should display validation message
+     - Empty TXT file upload should be accepted
+     - Message field should validate minimum character requirement
+
+   - File Upload Validation Module
+     - System should accept valid TXT files only
+     - Non-TXT files should be rejected
+     - Non-empty TXT files should display validation error
+     - Uploaded file name should display correctly
+
+   - Navigation Module
+     - Navbar categories should open correctly
+     - Dropdown menus should display properly
+     - Category navigation should redirect to correct pages
+     - URLs and page headings should match selected category
